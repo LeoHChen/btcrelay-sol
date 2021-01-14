@@ -12,12 +12,37 @@
     "npm": "^6.10.0",
     "openzeppelin-solidity": "^2.3.0",
     "solidity-bytes-utils": "^0.0.5",
+    "@harmony-js/core": "^0.1.55",
     "truffle-assertions": "^0.9.1",
     "truffle-hdwallet-provider": "^1.0.13"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/chai": "^4.2.6",
+    "@types/mocha": "^5.2.7",
+    "chai": "^4.2.0",
+    "dotenv": "^8.2.0",
+    "ethereum-waffle": "^2.4.1",
+    "ethereumjs-util": "^6.2.0",
+    "mocha": "^6.2.2",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.0",
+    "solc": "0.5.16",
+    "ts-node": "^8.5.4",
+    "tslib": "^2.0.0",
+    "typescript": "^3.7.3",
+    "waffle": "0.0.4"
+  },
   "scripts": {
-    "test": "truffle test"
+    "lint": "yarn prettier ./test/*.ts --check",
+    "lint:fix": "yarn prettier ./test/*.ts --write",
+    "clean": "rimraf ./build/",
+    "precompile": "yarn clean",
+    "postcompile": "yarn abi",
+    "compile": "waffle .waffle.json",
+    "abi": "./scripts/abi.sh",
+    "pretest": "yarn compile",
+    "test": "mocha",
+    "prepublishOnly": "yarn test"
   },
   "repository": {
     "type": "git",

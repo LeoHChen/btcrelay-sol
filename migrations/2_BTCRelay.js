@@ -10,5 +10,9 @@ module.exports = function (deployer, network) {
         deployer.deploy(BTCRelay);
     } else if (network == "main") {
         deployer.deploy(BTCRelay);
+    } else if (network == "testnet") {
+        deployer.deploy(Utils);
+        deployer.link(Utils, BTCRelay);
+        deployer.deploy(BTCRelay);
     }
 };
